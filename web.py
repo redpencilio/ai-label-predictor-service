@@ -15,6 +15,12 @@ from .preprocessor import Preprocessor
 from .model import BertClassifier
 from .utils import seed_everything
 
+import sys
+
+# set path for torch load model dir
+here = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(here)
+
 seed_everything()
 preprocessor = Preprocessor()
 # load dutch tokenizer
@@ -27,7 +33,9 @@ def get_model(file_id):
         model_file = phys_file["results"]["bindings"][0]["uri"]["value"].replace("share://", "/share/")
 
         log("Loading from: " + str(model_file))
-        return torch.load(model_file)
+        r = torch.load(model_file)
+        log(r)
+        return r
     except Exception as e:
         log(e)
         return None
