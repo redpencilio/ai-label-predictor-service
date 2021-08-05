@@ -34,7 +34,6 @@ def get_model(file_id):
 
         log("Loading from: " + str(model_file))
         r = torch.load(model_file)
-        log(r)
         return r
     except Exception as e:
         log(e)
@@ -65,7 +64,6 @@ def query_data():
             return f"Unable to load model from file with id {model_file}", 400
         model.eval()
 
-        log(text)
         preprocessed = preprocessor(text)
         log(preprocessed)
 
