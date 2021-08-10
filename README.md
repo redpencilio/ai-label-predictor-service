@@ -1,6 +1,7 @@
 # ai-label-predictor-service
 
-A docker container for labeling text with an AI model trained with the [ai-label-trainer-service](https://github.com/redpencilio/ai-label-trainer-service).
+A docker container for labeling text with an AI model trained with
+the [ai-label-trainer-service](https://github.com/redpencilio/ai-label-trainer-service).
 
 ## Getting started
 
@@ -17,7 +18,8 @@ services:
       - ./share:/share
 ```
 
-It is important that the `model.py` file is exactly the same file as used in the [ai-label-trainer-service](https://github.com/redpencilio/ai-label-trainer-service)!
+It is important that the `model.py` file is exactly the same file as used in
+the [ai-label-trainer-service](https://github.com/redpencilio/ai-label-trainer-service)!
 
 ## Reference
 
@@ -54,6 +56,12 @@ It is important that the `model.py` file is exactly the same file as used in the
 Arguments:
 
 - model: id of the file that contains the model trained to make the predictions with
-  the [ai-label-trainer-service](https://github.com/redpencilio/ai-label-trainer-service). The file id can be
-  found in the result of the job that was created to start training.
+  the [ai-label-trainer-service](https://github.com/redpencilio/ai-label-trainer-service). The file id can be found in
+  the result of the job that was created to start training.
 - text: text for which a label should be predicted
+
+## Improvements
+
+For now, the trained model is loaded every time a request is made to make a prediction. The advantage of this is that
+multiple trained models can be used with this service. To improve performance, the id of the model could be passed as an
+environment variable and preloaded on startup.
