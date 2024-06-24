@@ -2,7 +2,7 @@ steps:
   build-and-push:
     image: woodpeckerci/plugin-docker-buildx
     settings:
-      repo: ${CI_REPO_OWNER/redpencilio/redpencil}/${CI_REPO_NAME%-service}
+      repo: ${CI_REPO_OWNER/redpencilio/redpencil}/${CI_REPO_NAME%%-service}
       tags: latest
       platforms: linux/amd64
       purge: true

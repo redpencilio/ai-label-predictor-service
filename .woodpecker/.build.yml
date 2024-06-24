@@ -2,7 +2,7 @@ steps:
   dry-run:
     image: woodpeckerci/plugin-docker-buildx
     settings:
-      repo: ${CI_REPO_OWNER/redpencilio/redpencil}/${CI_REPO_NAME%-service}
+      repo: ${CI_REPO_OWNER/redpencilio/redpencil}/${CI_REPO_NAME%%-service}
       platforms: linux/amd64
       dry-run: true
       purge: true
